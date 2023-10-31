@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .back-img{
+            background-image: url(./background-img.jpg);
+            background-size: cover;
+        }
+        .card{
+           border-radius: 10px; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <section class="back-img overflow-hidden">
+            <div class="container px-4 py-5 text-start my-4">
+
+                <div class="row gx-5 align-items-center ">
+                    <div class="col-lg-6 mb-5">
+                        <h1>Create New Account</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta vero numquam velit culpa ab
+                            ullam et autem excepturi dolorem perspiciatis suscipit in esse dolore aut aliquam labore,
+                            minus fuga asperiores.</p>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card bg-glass">
+                            <div class="card-body px-4 px-5">
+                                <form class="form">
+                                    <div class="row">
+                                        <h1 class="mb-5  mt-5 h3">Signup</h1>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label for="name1" class="form-label">Name</label>
+                                        <input type="text" name="name" id="name1" class="form-control"
+                                            placeholder="Enter Your Name">
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label for="email1" class="form-label">Email address</label>
+                                        <input type="email" name="email" id="email1" class="form-control"
+                                            placeholder="Enter Your Email">
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="pass1">Password</label>
+                                        <input type="password" name="password" id="pass1" class="form-control"
+                                            placeholder="Enter Your Password">
+                                    </div>
+
+                                    
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="cont1">contact</label>
+                                        <input type="number" name="contact" id="cont1" class="form-control"
+                                            placeholder="Enter Your Contact">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary mb-4">
+                                        Sign Up
+                                    </button>
+
+                                    <div class="text-center">
+                                        <p>Already have an account? <a href="./index.html">Login</a></p>
+                      
+                                      </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        const form = document.querySelector(".form");
+
+        form.addEventListener("submit",event=>{
+            event.preventDefault();
+
+            const formdata = new FormData(form);
+            const data = new URLSearchParams(formdata);
+
+            fetch("http://localhost:8006/user/signup",{
+                method: 'POST',
+                body: data
+            }).then(res=> res.json())
+                .then(data => console.log(data))
+                .catch(error => console.log(error));
+        })
+
+    </script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
